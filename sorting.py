@@ -157,14 +157,13 @@ def quick_sort(xs, cmp=cmp_standard):
     '''
     if len(xs)<=1:
         return xs
-
+    return quicksort(xs,0,len(xs)-1,cmp)
 def quicksort(xs,lo, hi,cmp=cmp_standard):
         if lo<hi:
             p = partition(xs,lo,hi,cmp)
             quicksort(xs,lo,p-1,cmp)
             quicksort(xs,p+1,hi,cmp)
             return xs
-    return quicksort(xs,0,len(xs)-1,cmp)
 
 #from wiki:
 #algorithm quicksort(A, lo, hi) is
