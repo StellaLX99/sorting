@@ -94,7 +94,7 @@ def merge_sorted(xs, cmp=cmp_standard):
     else:
         middle=len(xs)//2
         left=xs[:middle]
-        right=xs[middle+1:]
+        right=xs[middle:]
         left_sorted=merge_sorted(left,cmp)
         right_sorted=merge_sorted(right,cmp)
         return _merged(left_sorted,right_sorted,cmp)
@@ -133,9 +133,9 @@ def quick_sorted(xs, cmp=cmp_standard):
             comparison=cmp(p,xs[i])
             if comparison ==-1:
                 greater_than.append(xs[i])
-            if comparison ==1:
+            elif comparison ==1:
                 less_than.append(xs[i])
-            else:
+            elif comparison == 0:
                 equal.append(xs[i])
                 
         greater_sorted= quick_sorted(greater_than,cmp)
