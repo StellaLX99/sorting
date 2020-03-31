@@ -153,13 +153,13 @@ def quick_sort(xs, cmp=cmp_standard):
             p = partition(xs,lo,hi,cmp)
             quicksort(xs,lo,p-1,cmp)
             quicksort(xs,p+1,hi,cmp)
-            return xs
+        return xs
     return quicksort(xs,0, len(xs)-1)
 
 
 def partition(xs,lo,hi,cmp=cmp_standard):
     pivot=xs[hi]
-    i = lo
+    i = lo-1
     #consider two cmp situations
     if cmp==cmp_standard:
         for j in range(lo,hi):
@@ -178,7 +178,7 @@ def partition(xs,lo,hi,cmp=cmp_standard):
                 xs[i],xs[j]=xs[j],xs[i]
                 #swap
         xs[i+1],xs[hi]=xs[hi],xs[i+1]
-    return i 
+    return i+1 
 
 #from wiki:
 #algorithm quicksort(A, lo, hi) is
