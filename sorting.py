@@ -52,7 +52,7 @@ def _merged(xs, ys, cmp=cmp_standard):
     left_ix = 0
     right_ix = 0
     for i in range(len(xs)):
-        comparsion=cmp(xs[left_ix],ys[right_ix])
+        comparison=cmp(xs[left_ix],ys[right_ix])
         if comparison ==-1:
             out.append[xs[left_ix]]
             left_ix=left_ix+1
@@ -123,7 +123,7 @@ def quick_sorted(xs, cmp=cmp_standard):
         greater_than=[]
         equal=[]
         for i in range(len(xs)+1):
-            comparsion=cmp(p,xs[i])
+            comparison=cmp(p,xs[i])
             if comparison ==-1:
                 greather_than.append[xs[i]]
             if comparison ==1:
