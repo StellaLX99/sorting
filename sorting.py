@@ -165,11 +165,9 @@ def partition(xs,lo,hi,cmp=cmp_standard):
         for j in range(lo,hi):
             if xs[j]<pivot:
                 i=i+1
-                xs[i]=xs[j]
-                xs[j]=xs[i]
+                xs[i],xs[j]=xs[j],xs[i]
                 #swap
-        xs[i+1]=xs[hi]
-        xs[hi]=xs[i+1]
+        xs[i+1],xs[hi]=xs[hi],xs[i+1]
         #because everytime we are comparing the new lo with the border
 
      #consider two cmp situations
@@ -177,12 +175,10 @@ def partition(xs,lo,hi,cmp=cmp_standard):
         for j in range(lo,hi):
             if xs[j]>pivot:
                 i=i+1
-                xs[i]=xs[j]
-                xs[j]=xs[i]
+                xs[i],xs[j]=xs[j],xs[i]
                 #swap
-        xs[i+1]=xs[hi]
-        xs[hi]=xs[i+1]
-    return i+1
+        xs[i+1],xs[hi]=xs[hi],xs[i+1]
+    return i+1 
 
 #from wiki:
 #algorithm quicksort(A, lo, hi) is
