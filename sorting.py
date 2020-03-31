@@ -51,16 +51,16 @@ def _merged(xs, ys, cmp=cmp_standard):
     out=[]
     left_ix = 0
     right_ix = 0
-    for i in range(len(xs)):
+    for i in range(len(xs)-1):
         comparison=cmp(xs[left_ix],ys[right_ix])
         if comparison ==-1:
-            out.append[xs[left_ix]]
+            out.append(xs[left_ix])
             left_ix=left_ix+1
         if comparison==1:
-            out.append[ys[right_ix]]
+            out.append(ys[right_ix])
             right_ix=right_ix+1
         if comparison==0:
-            out.append[xs[left_ix],ys[right_ix]]
+            out.append(xs[left_ix],ys[right_ix])
             left_ix=left_ix+1
             right_ix=right_ix+1
     
@@ -122,16 +122,16 @@ def quick_sorted(xs, cmp=cmp_standard):
         less_than=[]
         greater_than=[]
         equal=[]
-        for i in range(len(xs)+1):
+        for i in range(len(xs)-1):
             comparison=cmp(p,xs[i])
             if comparison ==-1:
-                greather_than.append[xs[i]]
+                greather_than.append(xs[i])
             if comparison ==1:
-                less_than.append[xs[i]]
+                less_than.append(xs[i])
             else:
-                equal.append[xs[i]]
+                equal.append(xs[i])
                 
-        grater_sorted= quick_sorted(greater_than,cmp)
+        greater_sorted= quick_sorted(greater_than,cmp)
         less_sorted= quick_sorted(less_than,cmp)
         list_sorted= greater_sorted +less_sorted+equal
         return list_sorted 
@@ -176,7 +176,7 @@ def quick_sort(xs, cmp=cmp_standard):
     #return i
 
 
-def partition(xs,lo,hi,cmp):
+def partition(xs,lo,hi,cmp=cmp_standard):
     pivot=xs[hi]
     i = lo
     #consider two cmp situations
