@@ -159,7 +159,7 @@ def quick_sort(xs, cmp=cmp_standard):
 
 def partition(xs,lo,hi,cmp=cmp_standard):
     pivot=xs[hi]
-    i = lo
+    i = lo-1
     #consider two cmp situations
     if cmp==cmp_standard:
         for j in range(lo,hi):
@@ -168,8 +168,8 @@ def partition(xs,lo,hi,cmp=cmp_standard):
                 xs[i]=xs[j]
                 xs[j]=xs[i]
                 #swap
-        xs[i]=xs[hi]
-        xs[hi]=xs[i]
+        xs[i+1]=xs[hi]
+        xs[hi]=xs[i+1]
         #because everytime we are comparing the new lo with the border
 
      #consider two cmp situations
@@ -180,9 +180,9 @@ def partition(xs,lo,hi,cmp=cmp_standard):
                 xs[i]=xs[j]
                 xs[j]=xs[i]
                 #swap
-        xs[i]=xs[hi]
-        xs[hi]=xs[i]
-    return i
+        xs[i+1]=xs[hi]
+        xs[hi]=xs[i+1]
+    return i+1
 
 #from wiki:
 #algorithm quicksort(A, lo, hi) is
