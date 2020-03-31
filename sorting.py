@@ -1,4 +1,4 @@
-
+i
 #!/bin/python3
 '''
 Python provides built-in sort/sorted functions that use timsort internally.
@@ -51,7 +51,7 @@ def _merged(xs, ys, cmp=cmp_standard):
     out=[]
     left_ix = 0
     right_ix = 0
-    for i in range(len(xs)-1):
+    while left_ix<len(xs) and right_ix<len(ys):
         comparison=cmp(xs[left_ix],ys[right_ix])
         if comparison ==-1:
             out.append(xs[left_ix])
@@ -60,7 +60,8 @@ def _merged(xs, ys, cmp=cmp_standard):
             out.append(ys[right_ix])
             right_ix=right_ix+1
         if comparison==0:
-            out.append(xs[left_ix],ys[right_ix])
+            out.append(xs[left_ix])
+            out.append(ys[right_ix])
             left_ix=left_ix+1
             right_ix=right_ix+1
     
@@ -122,10 +123,10 @@ def quick_sorted(xs, cmp=cmp_standard):
         less_than=[]
         greater_than=[]
         equal=[]
-        for i in range(len(xs)-1):
+        for i in xs:
             comparison=cmp(p,xs[i])
             if comparison ==-1:
-                greather_than.append(xs[i])
+                greater_than.append(xs[i])
             if comparison ==1:
                 less_than.append(xs[i])
             else:
@@ -150,7 +151,7 @@ def quick_sort(xs, cmp=cmp_standard):
     '''
     if len(xs)<=1:
         return xs
-    def quicksort(xs,lo, hi,cmp):
+    def quicksort(xs,lo, hi,cmp=cmp_standard):
         if lo<hi:
             p = partition(xs,lo,hi,cmp)
             quicksort(xs,lo,p-1,cmp)
