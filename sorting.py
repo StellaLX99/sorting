@@ -64,7 +64,7 @@ def _merged(xs, ys, cmp=cmp_standard):
             out.append(ys[right_ix])
             left_ix=left_ix+1
             right_ix=right_ix+1
-    while (left_ix < len(xs)) or (right_ix < len(y)):
+    while (left_ix < len(xs)) or (right_ix < len(ys)):
         if left_ix < len(xs):
             out.append(xs[left_ix])
             left_ix=left_ix+1
@@ -129,7 +129,7 @@ def quick_sorted(xs, cmp=cmp_standard):
         less_than=[]
         greater_than=[]
         equal=[]
-        for i in xs:
+        for i in range(len(xs)):
             comparison=cmp(p,xs[i])
             if comparison ==-1:
                 greater_than.append(xs[i])
@@ -140,7 +140,7 @@ def quick_sorted(xs, cmp=cmp_standard):
                 
         greater_sorted= quick_sorted(greater_than,cmp)
         less_sorted= quick_sorted(less_than,cmp)
-        list_sorted= greater_sorted +less_sorted+equal
+        list_sorted= less_sorted + equal + greater_sorted
         return list_sorted 
             
         
