@@ -64,7 +64,13 @@ def _merged(xs, ys, cmp=cmp_standard):
             out.append(ys[right_ix])
             left_ix=left_ix+1
             right_ix=right_ix+1
-    
+   while (left_ix < len(xs)) or (right_ix < len(y)):
+       if left_ix < len(xs):
+           out.append(xs[left_ix])
+           left_ix=left_ix+1
+       else:
+           out.append(ys[right_ix])
+           right_ix= right_ix+1
     return out 
 
 
