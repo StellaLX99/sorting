@@ -143,27 +143,48 @@ def quick_sorted(xs, cmp=cmp_standard):
         list_sorted= less_sorted + equal + greater_sorted
         return list_sorted 
             
+def partition(xs,lo,hi,cmp=cmp_standard):
+    pivot=xs[hi]
+    i = lo
+    #consider two cmp situations
+    if cmp==cmp_standard:
+        for j in range(lo,hi):
+            if xs[j]<pivot:
+                i=i+1
+                xs[i]=xs[j]
+                xs[j]=xs[i]
+                #swap
+        xs[i]=xs[hi]
+        xs[hi]=xs[i]
+        #because everytime we are comparing the new lo with the border
+
+     #consider two cmp situations
+    elif cmp==cmp_reverse:
+        for j in range(lo,hi):
+            if xs[j]>pivot:
+                i=i+1
+                xs[i]=xs[j]
+                xs[j]=xs[i]
+                #swap
+        xs[i]=xs[hi]
+        xs[hi]=xs[i]
+    return i
+
+
+
+def quicksort(xs,lo, hi,cmp=cmp_standard):
+    if lo<hi:
+        p = partition(xs,lo,hi,cmp)
+        quicksort(xs,lo,p-1,cmp)
+        quicksort(xs,p+1,hi,cmp)
+    return xs
         
 def quick_sort(xs, cmp=cmp_standard):
-    '''
-    EXTRA CREDIT:
-    The main advantage of quick_sort is that it can be implemented in-place,
-    i.e. with O(1) memory requirement.
-    Merge sort, on the other hand, has an O(n) memory requirement.
-    Follow the pseudocode of the Lomuto partition scheme given on wikipedia
-    (https://en.wikipedia.org/wiki/Quicksort#Algorithm)
-    to implement quick_sort as an in-place algorithm.
-    You should directly modify the input xs variable instead of returning a copy of the list.
-    '''
+    
     if len(xs)<=1:
         return xs
+    else:
     return quicksort(xs,0,len(xs)-1,cmp)
-def quicksort(xs,lo, hi,cmp=cmp_standard):
-        if lo<hi:
-            p = partition(xs,lo,hi,cmp)
-            quicksort(xs,lo,p-1,cmp)
-            quicksort(xs,p+1,hi,cmp)
-            return xs
 
 #from wiki:
 #algorithm quicksort(A, lo, hi) is
@@ -183,32 +204,6 @@ def quicksort(xs,lo, hi,cmp=cmp_standard):
     #return i
 
 
-def partition(xs,lo,hi,cmp=cmp_standard):
-    pivot=xs[hi]
-    i = lo
-    #consider two cmp situations
-    if cmp==cmp_standard:
-        for j in range(lo,hi):
-            if xs[j]<pivot:
-                i=i+1
-                xs[i]=xs[j]
-                xs[j]=xs[i]
-                #swap
-        xs[i]=xs[hi]
-        xs[hi]=xs[i]
-        #because everytime we are comparing the new lo with the border
-        
-     #consider two cmp situations
-    elif cmp==cmp_reverse:
-        for j in range(lo,hi):
-            if xs[j]>pivot:
-                i=i+1
-                xs[i]=xs[j]
-                xs[j]=xs[i]
-                #swap
-        xs[i]=xs[hi]
-        xs[hi]=xs[i]
-    return i
 
 
 
