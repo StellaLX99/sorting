@@ -1,4 +1,4 @@
-i
+
 #!/bin/python3
 '''
 Python provides built-in sort/sorted functions that use timsort internally.
@@ -91,7 +91,7 @@ def merge_sorted(xs, cmp=cmp_standard):
         right=xs[middle+1:]
         left_sorted=merge_sorted(left,cmp)
         right_sorted=merge_sorted(right,cmp)
-        _merged(left_sorted,right_sorted,cmp)
+        return _merged(left_sorted,right_sorted,cmp)
         
         
 def quick_sorted(xs, cmp=cmp_standard):
