@@ -157,7 +157,8 @@ def quick_sort(xs, cmp=cmp_standard):
     '''
     if len(xs)<=1:
         return xs
-    def quicksort(xs,lo, hi,cmp=cmp_standard):
+
+def quicksort(xs,lo, hi,cmp=cmp_standard):
         if lo<hi:
             p = partition(xs,lo,hi,cmp)
             quicksort(xs,lo,p-1,cmp)
