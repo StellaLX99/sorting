@@ -184,7 +184,7 @@ def quick_sort(xs, cmp=cmp_standard):
     if len(xs)<=1:
         return xs
     else:
-    return quicksort(xs,0,len(xs)-1,cmp)
+        return quicksort(xs,0,len(xs)-1,cmp)
 
 #from wiki:
 #algorithm quicksort(A, lo, hi) is
