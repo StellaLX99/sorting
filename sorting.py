@@ -142,7 +142,21 @@ def quick_sorted(xs, cmp=cmp_standard):
         less_sorted= quick_sorted(less_than,cmp)
         list_sorted= less_sorted + equal + greater_sorted
         return list_sorted 
-            
+
+
+#Extra Credit
+def quick_sort(xs, cmp=cmp_standard):
+    if len(xs)<+1:
+        return xs
+    def quicksort(xs,lo, hi,cmp=cmp_standard):
+        if lo<hi:
+            p = partition(xs,lo,hi,cmp)
+            quicksort(xs,lo,p-1,cmp)
+            quicksort(xs,p+1,hi,cmp)
+            return xs
+    return quicksort(xs, o, len(xs)-1)
+
+
 def partition(xs,lo,hi,cmp=cmp_standard):
     pivot=xs[hi]
     i = lo
@@ -170,22 +184,6 @@ def partition(xs,lo,hi,cmp=cmp_standard):
         xs[hi]=xs[i]
     return i
 
-
-
-def quicksort(xs,lo, hi,cmp=cmp_standard):
-    if lo<hi:
-        p = partition(xs,lo,hi,cmp)
-        quicksort(xs,lo,p-1,cmp)
-        quicksort(xs,p+1,hi,cmp)
-    return xs
-        
-def quick_sort(xs, cmp=cmp_standard):
-    
-    if len(xs)<=1:
-        return xs
-    else:
-        return quicksort(xs,0,len(xs)-1,cmp)
-
 #from wiki:
 #algorithm quicksort(A, lo, hi) is
     #if lo < hi then
@@ -202,9 +200,6 @@ def quick_sort(xs, cmp=cmp_standard):
             #i := i + 1
     #swap A[i] with A[hi]
     #return i
-
-
-
 
 
 
