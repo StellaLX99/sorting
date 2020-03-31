@@ -154,7 +154,7 @@ def quick_sort(xs, cmp=cmp_standard):
             quicksort(xs,lo,p-1,cmp)
             quicksort(xs,p+1,hi,cmp)
             return xs
-    return quicksort(xs, o, len(xs)-1)
+    return quicksort(xs,0, len(xs)-1)
 
 
 def partition(xs,lo,hi,cmp=cmp_standard):
